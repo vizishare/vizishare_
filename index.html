@@ -1,0 +1,214 @@
+<!doctype html>
+<!--using the Shared Count API-->
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Foundation | Welcome</title>
+    <link rel="stylesheet" href="css/foundation.css" />
+    <script src="js/vendor/modernizr.js"></script>
+    <script src="js/vendor/jquery.js"></script>
+    <script src="js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+    </script>
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+  </head>
+ 
+  <body>
+    <div class="right" id="rightdiv" >
+      <table id="graph_style">
+        <script src="http://d3js.org/d3.v3.min.js"></script>
+          <script src="biPartite.js"></script>
+            <script>
+            var social_data=[
+            ['Facebook','Al Jazeera',45895, 45895],
+            ['Twitter','Al Jazeera',850, 850],
+            ['Google+','Al Jazeera',206812, 206812],
+            ['LinkedIn','Al Jazeera',55080, 55080],
+            ['Facebook','BBC',269019, 269019],
+            ['Twitter','BBC',9889, 9889],
+            ['Google+','BBC',286, 286],
+            ['LinkedIn','BBC',750, 750],
+            ['Facebook','Bloomberg',96831, 96831],
+            ['Twitter','Bloomberg',3, 3],
+            ['Google+','Bloomberg',102388, 102388],
+            ['LinkedIn','Bloomberg',262, 262],
+            ['Facebook','Engadget',23520, 23520],
+            ['Twitter','Engadget',29, 29],
+            ['Google+','Engadget',262738, 262738],
+            ['LinkedIn','Engadget',28570, 28570],
+            ['Facebook','ESPN',873058, 873058],
+            ['Twitter','ESPN',443, 443],
+            ['Google+','ESPN',709275, 709275],
+            ['LinkedIn','ESPN',15430, 15430],
+            ['Facebook','Forbes',39540, 39540],
+            ['Twitter','Forbes',31244, 31244],
+            ['Google+','Forbes',315308, 315308],
+            ['LinkedIn','Forbes',102130, 102130],
+            ['Facebook','Fox News',246304, 246304],
+            ['Twitter','Fox News',508, 508],
+            ['Google+','Fox News',169853, 169853],
+            ['LinkedIn','Fox News',35790, 35790],
+            ['Facebook','Gizmodo',26952, 26952],
+            ['Twitter','Gizmodo',821153, 821153],
+            ['Google+','Gizmodo',26392, 26392],
+            ['LinkedIn','Gizmodo',3010, 3010],
+            ['Facebook','Huffington Post',247900, 247900],
+            ['Twitter','Huffington Post',88, 88],
+            ['Google+','Huffington Post',306122, 306122],
+            ['LinkedIn','Huffington Post',28380, 28380],
+            ['Facebook','Mashable',11398, 11398],
+            ['Twitter','Mashable',149463, 149463],
+            ['Google+','Mashable',511673, 511673],
+            ['LinkedIn','Mashable',26840, 26840],
+            ['Facebook','The Onion',150776, 150776],
+            ['Twitter','The Onion',0, 0],
+            ['Google+','The Onion',233826, 233826],
+            ['LinkedIn','The Onion',3480, 3480],
+            ['Facebook','Reuters',32458, 32458],
+            ['Twitter','Reuters',346, 346],
+            ['Google+','Reuters',256883, 256883],
+            ['LinkedIn','Reuters',1250, 1250],
+            ['Facebook','TechCrunch',16114, 16114],
+            ['Twitter','TechCrunch',51577, 51557],
+            ['Google+','TechCrunch',624396, 624396],
+            ['LinkedIn','TechCrunch',21180, 21180],
+            ['Facebook','TIME',53980, 53980],
+            ['Twitter','TIME',82350, 82350],
+            ['Google+','TIME',661143, 661143],
+            ['LinkedIn','TIME',100000, 100000],
+            ['Facebook','USA Today',48980, 48980],
+            ['Twitter','USA Today',1933, 1933],
+            ['Google+','USA Today',188935, 188935],
+            ['LinkedIn','USA Today',1460, 1460],
+            ['Facebook','VentureBeat',1345, 1345],
+            ['Twitter','VentureBeat',31064, 31064],
+            ['Google+','VentureBeat',6303, 6305],
+            ['LinkedIn','VentureBeat',4000, 4000]
+            ];
+
+            
+         var social_dataF = social_data;
+         var vect = new Array(64);
+       /*
+            function check(){
+              if(document.getElementById("linkedin").checked==false)
+              {
+                for (var i = 0; i < 4; i++) {
+                  vect[i]=0
+                };
+              };            
+            
+              for(var i=0; i<64; i++) {
+               social_dataF[i] = new Array(4);
+              }
+              
+              
+              for (var i = 0 ; i<social_data.length; i++)
+              {
+               if (vect[i]==1) {
+                  social_dataF[i,[1][2][3][4]] = social_data[i,[1][2][3][4]];
+               
+                };
+              }; 
+            };*/
+           
+
+            function changeid ()
+            {
+            var e = document.getElementById("SocialNews");
+            e.id = "News Share";
+            }
+
+            var width = 700, height = 610, margin ={b:0, t:40, l:170, r:50};
+
+            var svg = d3.select("#rightdiv")
+              .append("svg").attr('width',width).attr('height',(height+margin.b+margin.t))
+              .append("g").attr("transform","translate("+ margin.l+","+margin.t+")");
+
+            var data = [ 
+              {data:bP.partData(social_dataF,3), id:'SocialNews', header:["Social Network","News Outlet", "Social News"]}
+            ];
+
+            bP.draw(data, svg);
+
+
+
+            
+        
+
+            </script>
+
+      </table>
+    </div>
+    <div class="left" style="color: white">
+      <div class="row">
+        <div class="large-16 columns">
+          <img style="inline; float:left; width:75px; height:75px; max_height:75px; max_width:75px" src="http://www.hackgt.com/img/logo-icon.svg"/>
+          <h1><span style="color: #D4AF37">Vizi</span><span style="color: black">Share</span></h1>
+          
+        </div>
+        <button onclick="check()">Adapt</button>
+      </div>
+      <div class="row">
+  	   <div class="small-4 large-12 large-centered columns ">
+  	      <h5 id ="rogue">Select Social Networks</h5>
+        </div>
+      </div>
+      <div class = "row">
+        <div class="small-4 large-12 large-centered columns ">
+          <table id = "Networks">
+            <tr><td class ="td_class"><input id="linkedin" type="checkbox" value="The Value" checked="checked"> <label for="linkedin">LinkedIn</label></td></tr>
+            <tr><td class ="td_class"><input id="twitter" type="checkbox" value="The Value" checked="checked"> <label for="twitter">Twitter</label></td></tr>
+            <tr><td class ="td_class"><input id="facebook" type="checkbox" value="The Value" checked="checked"> <label for="facebook">Facebook</label></td></tr>
+            <tr><td class ="td_class"><input id="google" type="checkbox" value="The Value" checked="checked"> <label for="google">Google +</label></td></tr>
+          </table>
+        </div>
+      </div>
+      <!--News Headers-->
+      <div class="row">
+        <div class="small-4 large-12 large-centered columns ">
+          <h5 id ="rogue">News Outlets</h5>
+        </div>
+      </div>
+      <div class = "row">
+        <div class="small-4 large-12 large-centered columns ">
+          <table id = "News">
+            <tr>
+              <td class ="td_class"><input id="jazeera" type="checkbox" value="The Value" checked="checked"><label for="jazeera">Al Jazeera</label></td>
+              <td class ="td_class"><input id="bloomberg" type="checkbox" value="The Value" checked="checked"><label for="bloomberg">Bloomberg</label></td>        
+            </tr>
+            <tr>
+              <td class ="td_class"><input id="bbc" type="checkbox" value="The Value" checked="checked"><label for="bbc">BBC</label></td>
+              <td class ="td_class"><input id="engadet" type="checkbox" value="The Value" checked="checked"><label for="engadget">Engadget</label></td>        
+            </tr>
+            <tr>
+              <td class ="td_class"><input id="espn" type="checkbox" value="The Value" checked="checked"><label for="espn">ESPN</label></td> 
+              <td class ="td_class"><input id="forbes" type="checkbox" value="The Value" checked="checked"><label for="forbes">Forbes</label></td>     
+            </tr>
+            <tr>
+              <td class ="td_class"><input id="fox" type="checkbox" value="The Value" checked="checked"><label for="fox">Fox News</label></td>
+              <td class ="td_class"><input id="gizmodo" type="checkbox" value="The Value" checked="checked"><label for="gizmodo">Gizmodo</label></td>    
+            </tr>
+            <tr>
+              <td class ="td_class"><input id="hpost" type="checkbox" value="The Value" checked="checked"><label for="hpost">Huffington Post</label></td>
+              <td class ="td_class"><input id="mashable" type="checkbox" value="The Value" checked="checked"><label for="mashable">Mashable</label></td> 
+            </tr>
+            <tr>
+              <td class ="td_class"><input id="onion" type="checkbox" value="The Value" checked="checked"><label for="onion">The Onion</label></td>
+              <td class ="td_class"><input id="reuters" type="checkbox" value="The Value" checked="checked"><label for="reuters">Reuters</label></td>        
+            </tr>
+            <tr>
+              <td class ="td_class"><input id="techcrunch" type="checkbox" value="The Value" checked="checked"><label for="techcrunch">Techcrunch</label></td>
+              <td class ="td_class"><input id="time" type="checkbox" value="The Value" checked="checked"><label for="time">TIME</label></td>          
+            </tr>
+            <tr>
+              <td class ="td_class"><input id="usa" type="checkbox" value="The Value" checked="checked"><label for="usa">USA Today</label> </td>
+              <td class ="td_class"><input id="venture" type="checkbox" value="The Value" checked="checked"><label for="venture">VentureBeat</label></td> 
+            </tr>
+          </table>
+        </div>
+      </div>
+  </div>
+</html>
